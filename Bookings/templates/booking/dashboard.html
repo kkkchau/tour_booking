@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать {{CustName}}</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-image: url("{% static 'img/doroga_asfalt_razmetka_130996_1920x1080.jpg' %}");
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            background-color:  rgba(0, 0, 0, 0.453);
+            padding: 10px;
+            color: #fff;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        .content p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/booking/login">Войти</a>
+        <a href="/booking/register">Регистрация</a>
+        <a href="/booking/catalog">Каталог</a>
+        <a href="/booking/bookTour">Забронировать тур</a>
+        <a href="/booking/myBooking">Мои брони</a>
+    </div>
+    <div class="content">
+        <h2 style="color: rgb(217, 217, 233);">Добро пожаловать {{CustName}}</h2>
+        <p style="color: rgb(217, 217, 233);">Добро пожаловать, {{CustName}}, теперь вы можете забронировать крысячий тур!</p>
+        <img src="{% static 'img/cute rat.jpg' %}" alt="Изображение">
+    </div>
+</body>
+</html>

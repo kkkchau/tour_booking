@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница входа</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-image: url("{% static 'img/doroga_asfalt_razmetka_130996_1920x1080.jpg' %}");
+            text-align: center;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.453);
+            padding: 10px;
+            color: #fff;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            margin-top: 50px;
+            display: inline-block;
+            text-align: left;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/booking/login">Войти</a>
+        <a href="/booking/register">Регистрация</a>
+        <a href="/booking/catalog">Каталог туров</a>
+        <a href="/booking/bookTour">Забронировать тур</a>
+        <a href="/booking/myBooking">Мои брони</a>
+    </div>
+    <div class="content">
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <h2>Страница входа</h2>
+        <form action="{% url 'Bookings:dashboard' %}" method="post">
+            {{ field.error }}
+            {% csrf_token %}
+            <p>Имя {{ form.name }}</p>
+            <p>Номер телефона{{ form.contact }}</p>
+            <p>Пароль {{ form.password }}</p>
+            <input type="submit" value="Войти" /><br>
+            <p><a href="/booking">На главную</a></p>
+            <p><a href="/booking/register">Регистрация</a></p>
+        </form>
+    </div>
+</body>
+</html>

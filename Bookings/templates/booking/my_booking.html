@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои брони</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-image: url("{% static 'img/doroga_asfalt_razmetka_130996_1920x1080.jpg' %}");
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            background-color:  rgba(0, 0, 0, 0.453);
+            padding: 10px;
+            color: #fff;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        .content p {
+            margin-bottom: 20px;
+        }
+        table {
+            color: #fff;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/booking/login">Войти</a>
+        <a href="/booking/register">Регистрация</a>
+        <a href="/booking/catalog">Каталог туров</a>
+        <a href="/booking/bookTour">Забронировать тур</a>
+        <a href="/booking/myBooking">Мои брони</a>
+    </div>
+    <div class="content">
+        <h1 style="color: rgb(217, 217, 233);">Мои брони</h1>
+        <table border="1">
+            <tr>
+                <th>Тур</th>
+                <th>Клиент</th>
+                <th>Статус бронирования</th>
+                <th>Стоимость</th>
+                <th>Дата начала тура</th>
+                <th>Дата конца тура</th>
+            </tr>
+            {% for booking in bookingListObj %}
+                <tr>
+                    <td>{{ booking.h_id.name }}</td>
+                    <td>{{ booking.c_id.name }}</td>
+                    <td>{{ booking.status }}</td>
+                    <td>{{ booking.amount }}</td>
+                    <td>{{ booking.checkInDate }}</td>
+                    <td>{{ booking.checkOutDate }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
